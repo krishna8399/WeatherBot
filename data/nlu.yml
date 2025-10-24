@@ -1,0 +1,134 @@
+
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: ask_weather
+  examples: |
+    - what's the weather like in [London](location)?
+    - show me the weather for [New York](location)
+    - weather in [Paris](location)
+    - will it rain today in [Seattle](location)?
+    - is it sunny in [San Francisco](location)?
+    - current weather for [Tokyo](location)
+    - tell me the weather in [Berlin](location)
+    - how's the temperature in [Madrid](location)
+
+- intent: ask_outfit
+  examples: |
+    - what should I wear today in [London](location)?
+    - suggest an outfit for [New York](location)
+    - what to wear in [Paris](location)
+    - outfit suggestion for [Tokyo](location)
+    - how should I dress for the weather in [Berlin](location)
+    - outfit suggestion for [Tokyo](location)
+    - how should I dress for the weather in [Berlin](location)
+
+
+- intent: greet_with_suggestion
+  examples: |
+    - hi
+    - hello
+    - hey
+    - good morning
+    - good evening
+    - hey, what can you tell me about the weather?
+    - hello, what can you do?
+
+- intent: weather_detail_query
+  examples: |
+    - what's the [humidity](weather_detail) in [London](location)?
+    - tell me the [wind speed](weather_detail) in [Paris](location)
+    - how much [pressure](weather_detail) is there in [Berlin](location)?
+    - what's the [UV index](weather_detail) for [New York](location)?
+    - give me the [visibility](weather_detail) in [Tokyo](location)
+    - what's the [cloud cover](weather_detail) in [Madrid](location)?
+    - how strong are the [gusts](weather_detail) in [Rome](location)?
+    - what's the [feels like temperature](weather_detail) in [London](location)?

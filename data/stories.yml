@@ -1,0 +1,49 @@
+
+version: "3.1"
+
+
+  - story: greet and suggest questions
+
+      - intent: greet
+
+      - action: utter_greet_with_suggestion
+  - story: user asks for weather, gets outfit suggestion
+    steps:
+      - intent: ask_weather
+        entities:
+          version: "3.1"
+
+
+          - story: greet and suggest questions
+            steps:
+            - intent: greet
+            - action: utter_greet_with_suggestion
+
+          - story: user asks for weather, gets outfit suggestion
+            - intent: ask_weather
+              entities:
+              - location: "London"
+            - action: action_weather_outfit
+            - action: utter_offer_outfit
+            - intent: affirm
+            - action: action_weather_outfit
+
+          - story: user asks for specific weather detail
+            steps:
+              entities:
+              - location: "London"
+              - weather_detail: "humidity"
+            - action: action_weather_detail
+            - action: utter_offer_outfit
+            - intent: affirm
+            - action: action_weather_outfit
+
+          - story: user declines outfit suggestion
+            steps:
+            - intent: ask_weather
+              entities:
+              - location: "London"
+            - action: action_weather_outfit
+            - action: utter_offer_outfit
+            - intent: deny
+            - action: utter_goodbye

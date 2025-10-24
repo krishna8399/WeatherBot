@@ -1,0 +1,69 @@
+version: "3.1"
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - ask_weather
+  - ask_outfit
+  - greet_with_suggestion
+  - weather_detail_query
+entities:
+  - location
+  - unit
+  - weather_detail
+slots:
+  location:
+    type: text
+    mappings: []
+    influence_conversation: false
+  unit:
+    type: text
+    initial_value: metric
+    mappings: []
+    influence_conversation: false
+  weather_detail:
+    type: text
+    mappings: []
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_did_that_help:
+  - text: "Did that help you?"
+  utter_happy:
+  - text: "Great, carry on!"
+  utter_goodbye:
+  - text: "Bye"
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  utter_ask_location:
+  - text: "Sure — for which city would you like the weather?"
+  utter_ask_unit:
+  - text: "Do you prefer Celsius or Fahrenheit?"
+  utter_greet_with_suggestion:
+  - text: "Hello! I can help you with weather info. You can ask about temperature, humidity, wind, UV index, or just say 'weather in <city>'. What would you like to know?"
+  utter_ask_weather_detail:
+  - text: "Which weather detail are you interested in? (e.g., temperature, humidity, wind, UV index)"
+  utter_offer_outfit:
+  - text: "Would you like an outfit suggestion for this weather?"
+  utter_provide_outfit:
+  - text: "Based on the current weather, here's a good outfit suggestion: {outfit}"
+  utter_weather_detail:
+  - text: "The {weather_detail} in {location} is {value}."
+  utter_no_api_key:
+  - text: "I can't fetch weather right now because no weather API key is configured. Set either WEATHERAPI_KEY (weatherapi.com) or OPENWEATHER_API_KEY (openweathermap.org) in the environment."
+  utter_could_not_fetch:
+  - text: "I couldn't fetch the weather for {location}. Please check the city name and try again."
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+actions:
+  - action_weather_outfit
+  - action_weather_detail
