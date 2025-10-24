@@ -1,0 +1,63 @@
+version: "3.8"
+
+services:
+  rasa:
+    image: rasa/rasa:3.6.2-full
+    command: [
+      "run",
+      "--enable-api",
+      "--cors",
+      "*",
+      "--port",
+      "5005",
+      "--model",
+      "/app/models",
+      "--endpoints",
+      "/app/endpoints.docker.yml",
+      "--credentials",
+      "/app/credentials.yml"
+    ]
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - WEATHERAPI_KEY=${WEATHERAPI_KEY}
+    depends_on:
+      - actions
+
+  actions:
+    image: rasa/rasa:3.6.2-full
+    command: [
+      "run",
+      "actions",
+      "--actions",
+      "actions.actions"
+    ]
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - WEATHERAPI_KEY=${WEATHERAPI_KEY}
+
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rasa
+
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+      - rasa
+
+networks:
+  default:
+    name: weatherbot_net
