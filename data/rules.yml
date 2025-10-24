@@ -12,12 +12,19 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Provide weather and outfit suggestion
-  steps:
-  - intent: ask_weather
-  - action: action_weather_outfit
-
 - rule: Provide outfit suggestion when asked
   steps:
   - intent: ask_outfit
-  - action: action_weather_outfit
+  - action: action_provide_outfit
+
+# Removed direct rules mapping for ask_weather/weather_detail_query to avoid rule/story contradictions.
+
+- rule: Greet with suggestions
+  steps:
+  - intent: greet
+  - action: utter_greet_with_suggestion
+
+- rule: Suggest when user asks what you can do
+  steps:
+  - intent: greet_with_suggestion
+  - action: utter_greet_with_suggestion

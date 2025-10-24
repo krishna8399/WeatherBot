@@ -1,49 +1,38 @@
-
 version: "3.1"
 
+stories:
+- story: greet and suggest questions
+  steps:
+  - intent: greet
+  - action: utter_greet_with_suggestion
 
-  - story: greet and suggest questions
+- story: weather then outfit yes
+  steps:
+  - intent: ask_weather
+    entities:
+    - location: London
+  - action: action_weather_brief
+  - action: utter_offer_outfit
+  - intent: affirm
+  - action: action_provide_outfit
 
-      - intent: greet
+- story: weather then outfit no
+  steps:
+  - intent: ask_weather
+    entities:
+    - location: London
+  - action: action_weather_brief
+  - action: utter_offer_outfit
+  - intent: deny
+  - action: utter_goodbye
 
-      - action: utter_greet_with_suggestion
-  - story: user asks for weather, gets outfit suggestion
-    steps:
-      - intent: ask_weather
-        entities:
-          version: "3.1"
-
-
-          - story: greet and suggest questions
-            steps:
-            - intent: greet
-            - action: utter_greet_with_suggestion
-
-          - story: user asks for weather, gets outfit suggestion
-            - intent: ask_weather
-              entities:
-              - location: "London"
-            - action: action_weather_outfit
-            - action: utter_offer_outfit
-            - intent: affirm
-            - action: action_weather_outfit
-
-          - story: user asks for specific weather detail
-            steps:
-              entities:
-              - location: "London"
-              - weather_detail: "humidity"
-            - action: action_weather_detail
-            - action: utter_offer_outfit
-            - intent: affirm
-            - action: action_weather_outfit
-
-          - story: user declines outfit suggestion
-            steps:
-            - intent: ask_weather
-              entities:
-              - location: "London"
-            - action: action_weather_outfit
-            - action: utter_offer_outfit
-            - intent: deny
-            - action: utter_goodbye
+- story: detail then outfit
+  steps:
+  - intent: weather_detail_query
+    entities:
+    - location: London
+    - weather_detail: humidity
+  - action: action_weather_detail
+  - action: utter_offer_outfit
+  - intent: affirm
+  - action: action_provide_outfit

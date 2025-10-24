@@ -49,39 +49,7 @@ nlu:
     - no way
     - not really
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+# removed default mood intents not used by domain
 
 - intent: bot_challenge
   examples: |
@@ -100,6 +68,16 @@ nlu:
     - current weather for [Tokyo](location)
     - tell me the weather in [Berlin](location)
     - how's the temperature in [Madrid](location)
+    - will it rain in [Berlin](location)?
+    - is it going to rain today in [London](location)?
+    - will there be rain in [Paris](location)?
+    - is it raining in [New York](location)?
+    - will it be sunny in [Tokyo](location)?
+    - is it cloudy in [Madrid](location)?
+    - what are the conditions in [Rome](location)?
+    - will it snow in [Oslo](location)?
+    - is it going to be rainy in [Seattle](location)?
+    - any chance of rain in [Mumbai](location)?
 
 - intent: ask_outfit
   examples: |
@@ -108,19 +86,13 @@ nlu:
     - what to wear in [Paris](location)
     - outfit suggestion for [Tokyo](location)
     - how should I dress for the weather in [Berlin](location)
-    - outfit suggestion for [Tokyo](location)
-    - how should I dress for the weather in [Berlin](location)
-
 
 - intent: greet_with_suggestion
   examples: |
-    - hi
-    - hello
-    - hey
-    - good morning
-    - good evening
     - hey, what can you tell me about the weather?
     - hello, what can you do?
+    - can you suggest what weather details I can ask?
+    - what can you help me with about the weather?
 
 - intent: weather_detail_query
   examples: |
