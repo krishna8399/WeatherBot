@@ -1,0 +1,21 @@
+{
+  "london": "London",
+  "new york": "New York",
+  "paris": "Paris",
+  "seattle": "Seattle",
+  "san francisco": "San Francisco",
+  "tokyo": "Tokyo",
+  "berlin": "Berlin",
+  "madrid": "Madrid",
+  "rome": "Rome",
+  "oslo": "Oslo",
+  "mumbai": "Mumbai",
+  "humidity": "humidity",
+  "wind speed": "wind speed",
+  "pressure": "pressure",
+  "uv index": "UV index",
+  "visibility": "visibility",
+  "cloud cover": "cloud cover",
+  "gusts": "gusts",
+  "feels like temperature": "feels like temperature"
+}
