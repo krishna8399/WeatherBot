@@ -1,12 +1,12 @@
-version: "3.1"
+version: "3.1"  # Rasa Core stories schema version
 
-stories:
+stories:  # Example conversational paths to teach dialogue policies
 - story: greet and suggest questions
   steps:
   - intent: greet
   - action: utter_greet_with_suggestion
 
-- story: weather then outfit yes
+- story: weather then outfit yes  # Ask weather -> offer outfit -> user accepts -> provide outfit
   steps:
   - intent: ask_weather
     entities:
@@ -16,7 +16,7 @@ stories:
   - intent: affirm
   - action: action_provide_outfit
 
-- story: weather then outfit no
+- story: weather then outfit no  # Ask weather -> offer outfit -> user declines -> say goodbye
   steps:
   - intent: ask_weather
     entities:
@@ -26,7 +26,7 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: detail then outfit
+- story: detail then outfit  # Ask a specific detail -> offer outfit -> user accepts -> provide outfit
   steps:
   - intent: weather_detail_query
     entities:

@@ -1,6 +1,6 @@
-version: "3.1"
+version: "3.1"  # Rasa rules schema version
 
-rules:
+rules:  # Deterministic one-turn behaviors (no prediction needed)
 
 - rule: Say goodbye anytime the user says goodbye
   steps:
@@ -12,19 +12,20 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Provide outfit suggestion when asked
+- rule: Provide outfit suggestion when asked  # Allow direct outfit requests
   steps:
   - intent: ask_outfit
   - action: action_provide_outfit
 
-# Removed direct rules mapping for ask_weather/weather_detail_query to avoid rule/story contradictions.
+# Note: We avoid rules for ask_weather/weather_detail_query to let stories drive the multi-turn flow
+# and prevent contradictions at train time.
 
-- rule: Greet with suggestions
+- rule: Greet with suggestions  # Map greetings to helpful suggestion message
   steps:
   - intent: greet
   - action: utter_greet_with_suggestion
 
-- rule: Suggest when user asks what you can do
+- rule: Suggest when user asks what you can do  # Support "what can you do" style prompts
   steps:
   - intent: greet_with_suggestion
   - action: utter_greet_with_suggestion

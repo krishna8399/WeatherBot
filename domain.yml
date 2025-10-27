@@ -1,5 +1,12 @@
-version: "3.1"
-intents:
+version: "3.1"  # Rasa domain schema version
+#
+# Domain defines the conversational universe:
+# - intents: what users want
+# - entities: structured data extracted from messages
+# - slots: bot memory (influences dialogue when configured)
+# - responses: templated bot replies
+# - actions: custom python code (in actions/actions.py)
+intents:  # High-level user goals recognized by NLU
   - greet
   - goodbye
   - affirm
@@ -9,29 +16,29 @@ intents:
   - ask_outfit
   - greet_with_suggestion
   - weather_detail_query
-entities:
+entities:  # Key data points we extract from messages
   - location
   - unit
   - weather_detail
-slots:
+slots:  # Memory values; here we keep location, units, requested detail, and raw weather
   location:
-    type: text
-    mappings: []
-    influence_conversation: false
+    type: text  # last referenced city/location
+    mappings: []  # set programmatically in actions or via forms (none here)
+    influence_conversation: false  # do not bias the policy predictions directly
   unit:
-    type: text
+    type: text  # measurement units; default metric
     initial_value: metric
     mappings: []
     influence_conversation: false
   weather_detail:
-    type: text
+    type: text  # e.g., humidity, wind, uv, pressure
     mappings: []
     influence_conversation: false
   weather_data:
-    type: any
+    type: any  # stores WeatherAPI current payload for reuse (ActionProvideOutfit)
     mappings: []
     influence_conversation: false
-responses:
+responses:  # Templated replies referenced as utter_* in stories/rules/actions
   utter_goodbye:
   - text: "Bye"
   utter_iamabot:
@@ -42,10 +49,10 @@ responses:
   - text: "Hello! I can help you with weather info. You can ask about temperature, humidity, wind, UV index, or just say 'weather in <city>'. What would you like to know?"
   utter_offer_outfit:
   - text: "Would you like an outfit suggestion for this weather?"
-session_config:
+session_config:  # Session lifetime and slot carryover
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
-actions:
+actions:  # Custom actions defined in actions/actions.py
   - action_weather_detail
   - action_weather_brief
   - action_provide_outfit

@@ -56,27 +56,27 @@ echo   WeatherBot is now running!
 echo ========================================
 echo.
 
-REM Auto-detect the first non-localhost IPv4 address
+REM Auto-detect the first non-localhost IPv4 address by parsing ipconfig output
 for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr /C:"IPv4"') do (
     set "DETECTED_IP=%%a"
     goto :ip_found
 )
 :ip_found
-REM Trim leading spaces
+REM Trim leading spaces that ipconfig includes before the address
 set "DETECTED_IP=%DETECTED_IP: =%"
 
 if defined DETECTED_IP (
     echo Web Interface: http://%DETECTED_IP%:8080
     echo Rasa API: http://%DETECTED_IP%:5005
     echo.
-    echo Press any key to open the web interface...
+    echo Press any key to open the web interface at your detected IP...
     pause >nul
     start "" http://%DETECTED_IP%:8080
 ) else (
     echo Web Interface: http://127.0.0.1:8080
     echo Rasa API: http://127.0.0.1:5005
     echo.
-    echo Press any key to open the web interface...
+    echo Press any key to open the web interface on localhost...
     pause >nul
     start "" http://127.0.0.1:8080
 )

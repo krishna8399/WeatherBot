@@ -1,6 +1,6 @@
 
-version: "3.1"
-nlu:
+version: "3.1"  # Rasa NLU training data schema version
+nlu:  # List of intents with example utterances (YAML block style)
 - intent: greet
   examples: |
     - hey
@@ -49,7 +49,7 @@ nlu:
     - no way
     - not really
 
-# removed default mood intents not used by domain
+# Note: We intentionally removed default smalltalk/mood intents to keep the domain focused.
 
 - intent: bot_challenge
   examples: |
@@ -58,7 +58,7 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
-- intent: ask_weather
+- intent: ask_weather  # General weather queries; entity extractor should pick up location
   examples: |
     - what's the weather like in [London](location)?
     - show me the weather for [New York](location)
@@ -79,7 +79,7 @@ nlu:
     - is it going to be rainy in [Seattle](location)?
     - any chance of rain in [Mumbai](location)?
 
-- intent: ask_outfit
+- intent: ask_outfit  # Direct requests for outfit suggestions (can work with or without prior weather)
   examples: |
     - what should I wear today in [London](location)?
     - suggest an outfit for [New York](location)
@@ -87,14 +87,14 @@ nlu:
     - outfit suggestion for [Tokyo](location)
     - how should I dress for the weather in [Berlin](location)
 
-- intent: greet_with_suggestion
+- intent: greet_with_suggestion  # When users ask what the bot can do; maps to a helpful greeting
   examples: |
     - hey, what can you tell me about the weather?
     - hello, what can you do?
     - can you suggest what weather details I can ask?
     - what can you help me with about the weather?
 
-- intent: weather_detail_query
+- intent: weather_detail_query  # Requests for a specific metric (humidity, UV, wind, etc.)
   examples: |
     - what's the [humidity](weather_detail) in [London](location)?
     - tell me the [wind speed](weather_detail) in [Paris](location)

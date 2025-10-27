@@ -1,2 +1,6 @@
+# Docker-specific action endpoint.
+# "actions" is the service name inside docker-compose.yml; Docker DNS resolves it.
+# Docker-specific endpoints where containers reach each other by service name.
+# The action server runs in the "actions" service and exposes the SDK webhook at /webhook
 action_endpoint:
   url: "http://actions:5055/webhook"
