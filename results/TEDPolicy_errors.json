@@ -1,0 +1,56 @@
+[
+  {
+    "text": "weather in London",
+    "entities": [
+      {
+        "start": 11,
+        "end": 17,
+        "value": "London",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "weather in London",
+    "entities": [
+      {
+        "start": 11,
+        "end": 17,
+        "value": "London",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "what's the humidity in London?",
+    "entities": [
+      {
+        "start": 11,
+        "end": 19,
+        "value": "humidity",
+        "entity": "weather_detail"
+      },
+      {
+        "start": 23,
+        "end": 29,
+        "value": "London",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "what should I wear today in London?",
+    "entities": [
+      {
+        "start": 28,
+        "end": 34,
+        "value": "London",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  }
+]
