@@ -43,7 +43,7 @@ start "Rasa Actions" cmd /k cd /d "%PROJECT_DIR%" ^&^& "%ENV_PY%" -m rasa run ac
 timeout /t 5 /nobreak >nul
 
 echo [3/4] Starting Rasa Server...
-start "Rasa Server" cmd /k cd /d "%PROJECT_DIR%" ^&^& "%ENV_PY%" -m rasa run --enable-api --cors * --port 5005
+start "Rasa Server" cmd /k cd /d "%PROJECT_DIR%" ^&^& "%ENV_PY%" -m rasa run --enable-api --cors * --port 5005 -i 0.0.0.0
 timeout /t 10 /nobreak >nul
 
 echo [4/4] Starting Web Interface...

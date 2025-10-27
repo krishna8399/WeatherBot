@@ -51,7 +51,7 @@ start "Actions (logs\\actions.log)" cmd /k cd /d "%PROJECT_DIR%" ^&^& "%ENV_PY%"
 timeout /t 5 /nobreak >nul
 
 echo [step] Starting Rasa Server (logs\rasa.log)...
-start "Rasa (logs\\rasa.log)" cmd /k cd /d "%PROJECT_DIR%" ^&^& "%ENV_PY%" -m rasa run --enable-api --cors * --port 5005 1>>"logs\rasa.log" 2>&1
+start "Rasa (logs\\rasa.log)" cmd /k cd /d "%PROJECT_DIR%" ^&^& "%ENV_PY%" -m rasa run --enable-api --cors * --port 5005 -i 0.0.0.0 1>>"logs\rasa.log" 2>&1
 timeout /t 10 /nobreak >nul
 
 echo [step] Starting Web Server (logs\web.log)...
