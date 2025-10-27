@@ -218,9 +218,16 @@
         const typingIndicator = document.getElementById('typing-indicator');
 
         function getApiBase() {
-            // Local dev: if the web UI is on port 8080, Rasa is on 5005 on the SAME host.
-            // Use the current hostname (works for localhost, 127.0.0.1, or LAN IP).
-            if (window.location.port === '8080') {
+            // If running on localhost:8080, always use 127.0.0.1:5005 for API to avoid Windows localhost mapping issues
+            if (window.location.hostname === 'localhost' && window.location.port === '8080') {
+                return window.location.protocol + '//127.0.0.1:5005';
+            }
+            // If running on 127.0.0.1:8080, use 127.0.0.1:5005
+            if (window.location.hostname === '127.0.0.1' && window.location.port === '8080') {
+                return window.location.protocol + '//127.0.0.1:5005';
+            }
+            // If running on a LAN IP, use that IP for API as well
+            if (/^\d+\.\d+\.\d+\.\d+$/.test(window.location.hostname) && window.location.port === '8080') {
                 return window.location.protocol + '//' + window.location.hostname + ':5005';
             }
             // In containerized/production behind Nginx, proxy /api to Rasa.

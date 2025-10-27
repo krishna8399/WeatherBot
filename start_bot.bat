@@ -55,17 +55,31 @@ echo ========================================
 echo   WeatherBot is now running!
 echo ========================================
 echo.
-echo Web Interface: http://localhost:8080
-echo Rasa API: http://localhost:5005
-echo.
-echo To share with others on your network:
-echo 1. Find your IP: ipconfig (look for IPv4 Address)
-echo 2. Share: http://YOUR_IP:8080
-echo.
-echo Press any key to open the web interface...
-pause >nul
 
-start "" http://localhost:8080
+REM Auto-detect the first non-localhost IPv4 address
+for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr /C:"IPv4"') do (
+    set "DETECTED_IP=%%a"
+    goto :ip_found
+)
+:ip_found
+REM Trim leading spaces
+set "DETECTED_IP=%DETECTED_IP: =%"
+
+if defined DETECTED_IP (
+    echo Web Interface: http://%DETECTED_IP%:8080
+    echo Rasa API: http://%DETECTED_IP%:5005
+    echo.
+    echo Press any key to open the web interface...
+    pause >nul
+    start "" http://%DETECTED_IP%:8080
+) else (
+    echo Web Interface: http://127.0.0.1:8080
+    echo Rasa API: http://127.0.0.1:5005
+    echo.
+    echo Press any key to open the web interface...
+    pause >nul
+    start "" http://127.0.0.1:8080
+)
 
 echo.
 echo To stop all services, close all command windows.
