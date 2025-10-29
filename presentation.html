@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherBot - AI Weather Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/sky.css">
+    <style>
+        .reveal h1, .reveal h2, .reveal h3 {
+            text-transform: none;
+            color: #2c3e50;
+        }
+        .reveal {
+            font-size: 28px;
+        }
+        .reveal .slides {
+            text-align: left;
+        }
+        .reveal section {
+            height: 100%;
+            overflow-y: auto !important;
+        }
+        .reveal h2 {
+            font-size: 1.8em;
+            margin-bottom: 0.5em;
+        }
+        .reveal h3 {
+            font-size: 1.3em;
+            margin-top: 0.8em;
+            margin-bottom: 0.4em;
+        }
+        .title-slide {
+            text-align: center !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .title-slide h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.3em;
+            color: #3498db;
+        }
+        .title-slide .subtitle {
+            font-size: 1.5em;
+            color: #7f8c8d;
+            margin-bottom: 2em;
+        }
+        .title-slide .tagline {
+            font-size: 1.2em;
+            color: #e74c3c;
+            font-style: italic;
+        }
+        .problem-icon {
+            font-size: 4em;
+            text-align: center;
+            margin: 0.5em 0;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .solution-box {
+            background: #ecf0f1;
+            padding: 1em;
+            border-radius: 10px;
+            margin: 0.8em 0;
+            border-left: 5px solid #3498db;
+        }
+        .solution-box strong {
+            font-size: 1.05em;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1em;
+            margin-top: 1em;
+        }
+        .tech-item {
+            background: #3498db;
+            color: white;
+            padding: 1em;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 2em;
+            margin: 1em 0;
+        }
+        .timeline-item {
+            margin: 0.6em 0;
+            padding-left: 2em;
+            border-left: 3px solid #3498db;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '●';
+            position: absolute;
+            left: -0.6em;
+            color: #3498db;
+            font-size: 1.5em;
+        }
+        .chat-demo {
+            background: #34495e;
+            color: #ecf0f1;
+            padding: 1em;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 0.75em;
+            margin: 0.8em 0;
+            line-height: 1.5;
+        }
+        .user-msg {
+            color: #3498db;
+        }
+        .bot-msg {
+            color: #2ecc71;
+        }
+        .market-stat {
+            background: #2ecc71;
+            color: white;
+            padding: 0.8em;
+            border-radius: 8px;
+            margin: 0.4em 0;
+            text-align: center;
+            font-size: 1.05em;
+        }
+        .future-feature {
+            background: #9b59b6;
+            color: white;
+            padding: 0.6em;
+            border-radius: 8px;
+            margin: 0.4em 0;
+            font-size: 0.95em;
+        }
+        ul {
+            margin-top: 0.6em;
+            margin-bottom: 0.6em;
+        }
+        li {
+            margin: 0.3em 0;
+            line-height: 1.4;
+        }
+        .emoji {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Slide 1: Opening -->
+            <section class="title-slide">
+                <h1>🌤️ WeatherBot</h1>
+                <p class="subtitle">Your AI-Powered Weather & Wardrobe Assistant</p>
+                <p class="tagline">"Know the weather, wear it right!"</p>
+                <p style="margin-top: 2em; color: #95a5a6;">Weather Intelligence | Fashion Technology | Conversational AI</p>
+            </section>
+
+            <!-- Slide 2: The Problem -->
+            <section>
+                <h2>❓ The Problem</h2>
+                <div class="problem-icon">🌦️ 🤔 👔</div>
+                <ul style="margin-top: 0.5em;">
+                    <li><span class="highlight">50% of people</span> check weather but still dress inappropriately</li>
+                    <li>Weather apps overwhelm users with <span class="highlight">too much data</span></li>
+                    <li>No one tells you: <em>"Should I carry an umbrella?"</em> or <em>"Is it too cold for shorts?"</em></li>
+                    <li>Decision fatigue every morning: <span class="highlight">What should I wear today?</span></li>
+                </ul>
+                <div class="solution-box" style="margin-top: 1em;">
+                    <strong>The Gap:</strong> Weather data exists, but <em>actionable fashion advice</em> doesn't.
+                </div>
+            </section>
+
+            <!-- Slide 3: The Solution -->
+            <section>
+                <h2>💡 The Solution: WeatherBot</h2>
+                <div class="solution-box">
+                    <h3 style="margin-top: 0; font-size: 1.2em;">A conversational AI that bridges weather & wardrobe</h3>
+                    <ul style="margin-top: 0.5em; margin-bottom: 0.5em;">
+                        <li><strong>Natural Conversations:</strong> Ask in plain English: <em>"What's London's weather?"</em></li>
+                        <li><strong>Smart Summaries:</strong> Rain? Snow? Sunny? — Instant yes/no answers</li>
+                        <li><strong>Outfit Recommendations:</strong> Personalized clothing advice based on real-time conditions</li>
+                        <li><strong>Specific Metrics:</strong> Need humidity or UV index? Just ask!</li>
+                    </ul>
+                </div>
+                <p style="text-align: center; margin-top: 0.8em; font-size: 1em;">
+                    <span class="emoji">🤖</span> <strong>WeatherBot = Weather API + Rasa AI + Fashion Logic</strong> <span class="emoji">👗</span>
+                </p>
+            </section>
+
+            <!-- Slide 4: Market Opportunity -->
+            <section>
+                <h2>📈 Market Opportunity</h2>
+                <div class="market-stat">🌍 Global Weather Apps Market: $2.3B (2024)</div>
+                <div class="market-stat">👔 Fashion Tech Market: $3.8B (Growing 12% annually)</div>
+                
+                <h3 style="margin-top: 0.8em;">Target Audience (MVS)</h3>
+                <ul style="margin-top: 0.4em;">
+                    <li><strong>Urban Professionals</strong> — Quick morning decisions before commute</li>
+                    <li><strong>Travelers</strong> — Packing advice for destination weather</li>
+                    <li><strong>Parents</strong> — Dressing kids appropriately for school</li>
+                    <li><strong>Outdoor Enthusiasts</strong> — Hikers, runners needing gear advice</li>
+                </ul>
+                
+                <p style="margin-top: 0.8em;"><strong>Opportunity:</strong> 500M+ weather app users lack <span class="highlight">actionable fashion guidance</span></p>
+            </section>
+
+            <!-- Slide 5: Traction -->
+            <section>
+                <h2>🚀 Traction & Development</h2>
+                <h3>User Stories Implemented</h3>
+                <ul style="margin-top: 0.4em;">
+                    <li>✅ Brief weather check with condition-aware responses</li>
+                    <li>✅ Detailed metric queries (humidity, wind, UV, pressure)</li>
+                    <li>✅ Direct outfit recommendations</li>
+                    <li>✅ Multi-turn conversations (weather → offer outfit → confirm)</li>
+                </ul>
+                
+                <h3 style="margin-top: 0.8em;">Development Timeline</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><strong>Week 1:</strong> Core weather actions & API integration</div>
+                    <div class="timeline-item"><strong>Week 2:</strong> Outfit suggestion logic with precipitation priority</div>
+                    <div class="timeline-item"><strong>Week 3:</strong> Web UI, Flask server, one-click launcher</div>
+                    <div class="timeline-item"><strong>Week 4:</strong> Docker deployment, testing, documentation</div>
+                </div>
+            </section>
+
+            <!-- Slide 6: Tech Stack -->
+            <section>
+                <h2>🛠️ Tech Stack</h2>
+                <div class="tech-grid">
+                    <div class="tech-item"><strong>Rasa 3.x</strong><br>NLU + Dialogue Management</div>
+                    <div class="tech-item"><strong>Python</strong><br>Custom Actions</div>
+                    <div class="tech-item"><strong>WeatherAPI</strong><br>Real-time Weather Data</div>
+                    <div class="tech-item"><strong>Flask + HTML/JS</strong><br>Web Interface</div>
+                </div>
+                
+                <h3 style="margin-top: 1em;">Why This Stack?</h3>
+                <ul style="margin-top: 0.4em;">
+                    <li><strong>Rasa:</strong> Open-source, customizable, runs locally (data privacy)</li>
+                    <li><strong>WeatherAPI:</strong> Free tier, 1M calls/mo, 100+ data points</li>
+                    <li><strong>Docker:</strong> Easy deployment, platform-independent</li>
+                    <li><strong>Modular Design:</strong> Swap APIs, add new actions, scale horizontally</li>
+                </ul>
+                
+                <p style="margin-top: 0.8em;"><strong>Scalability:</strong> Docker Compose + Nginx for production; supports multiple instances</p>
+            </section>
+
+            <!-- Slide 7: Sustainability & Ethics -->
+            <section>
+                <h2>🌱 Sustainability & Ethics</h2>
+                
+                <h3>Data Privacy & Permissions</h3>
+                <ul style="margin-top: 0.4em;">
+                    <li><strong>No user accounts:</strong> Fully anonymous conversations</li>
+                    <li><strong>No personal data storage:</strong> Only city names for API calls</li>
+                    <li><strong>Session-based:</strong> Data cleared after conversation ends</li>
+                </ul>
+                
+                <h3 style="margin-top: 0.8em;">Ethical Considerations</h3>
+                <ul style="margin-top: 0.4em;">
+                    <li>✅ <strong>Transparent API usage:</strong> WeatherAPI terms compliant</li>
+                    <li>✅ <strong>Offline-first option:</strong> Can run locally without cloud dependencies</li>
+                    <li>✅ <strong>Inclusive advice:</strong> No gender/cultural assumptions in outfit suggestions</li>
+                    <li>✅ <strong>Environmental impact:</strong> Lightweight, low-compute design</li>
+                </ul>
+                
+                <p style="margin-top: 0.8em; color: #27ae60;"><strong>Guideline:</strong> EU GDPR compliant by design (minimal data, user control)</p>
+            </section>
+
+            <!-- Slide 8: Use Case Example 1 -->
+            <section>
+                <h2>💬 Use Case 1: Quick Morning Check</h2>
+                <div class="chat-demo">
+                    <p><span class="user-msg">👤 User:</span> Hi!</p>
+                    <p><span class="bot-msg">🤖 WeatherBot:</span> Hello! I can help with weather or outfit suggestions. Just ask!</p>
+                    <br>
+                    <p><span class="user-msg">👤 User:</span> What's the weather in London?</p>
+                    <p><span class="bot-msg">🤖 WeatherBot:</span> It's 12°C in London right now — rainy with light showers. 🌧️</p>
+                    <p style="margin-left: 2em; color: #95a5a6;">Would you like outfit suggestions?</p>
+                    <br>
+                    <p><span class="user-msg">👤 User:</span> Yes</p>
+                    <p><span class="bot-msg">🤖 WeatherBot:</span> For rainy weather at 12°C in London:</p>
+                    <p style="margin-left: 2em;">🌂 Waterproof jacket or raincoat</p>
+                    <p style="margin-left: 2em;">👟 Water-resistant shoes</p>
+                    <p style="margin-left: 2em;">☂️ Don't forget your umbrella!</p>
+                </div>
+                <p style="text-align: center; margin-top: 0.8em;"><strong>Result:</strong> User ready in 30 seconds! ⏱️</p>
+            </section>
+
+            <!-- Slide 9: Use Case Example 2 -->
+            <section>
+                <h2>💬 Use Case 2: Specific Metric Query</h2>
+                <div class="chat-demo">
+                    <p><span class="user-msg">👤 User:</span> What's the UV index in Sydney?</p>
+                    <p><span class="bot-msg">🤖 WeatherBot:</span> The UV index in Sydney is currently 8.0.</p>
+                    <p style="margin-left: 2em; color: #95a5a6;">Would you like outfit suggestions?</p>
+                    <br>
+                    <p><span class="user-msg">👤 User:</span> Yes</p>
+                    <p><span class="bot-msg">🤖 WeatherBot:</span> For sunny weather at 28°C in Sydney:</p>
+                    <p style="margin-left: 2em;">🧢 Wide-brimmed hat and sunglasses</p>
+                    <p style="margin-left: 2em;">🩳 Light, breathable fabrics (cotton, linen)</p>
+                    <p style="margin-left: 2em;">🧴 High SPF sunscreen essential!</p>
+                </div>
+                <br>
+                <div class="chat-demo">
+                    <p><span class="user-msg">👤 User:</span> What should I wear in Tokyo today?</p>
+                    <p><span class="bot-msg">🤖 WeatherBot:</span> <em>[Fetches weather automatically]</em></p>
+                    <p style="margin-left: 2em;">For overcast weather at 15°C: Light jacket or cardigan recommended...</p>
+                </div>
+            </section>
+
+            <!-- Slide 10: Future & Conclusion -->
+            <section>
+                <h2>🔮 Future Development</h2>
+                <div class="future-feature">📍 <strong>Location Detection:</strong> Auto-detect user's city via IP/GPS</div>
+                <div class="future-feature">📅 <strong>Weekly Forecasts:</strong> "Plan your outfits for the week"</div>
+                <div class="future-feature">🎨 <strong>Style Preferences:</strong> Learn user's fashion taste (formal/casual/sporty)</div>
+                <div class="future-feature">🛍️ <strong>Shopping Integration:</strong> Suggest products from partner brands</div>
+                <div class="future-feature">🌐 <strong>Multi-language:</strong> Support 10+ languages for global reach</div>
+                <div class="future-feature">📱 <strong>Mobile App:</strong> Native iOS/Android with push notifications</div>
+                
+                <div style="text-align: center; margin-top: 1.2em; padding: 1.2em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px;">
+                    <h3 style="color: white; margin-top: 0; font-size: 1.2em;">🎯 The Punchline</h3>
+                    <p style="font-size: 1.15em; margin: 0;">
+                        <em>"WeatherBot: Because knowing the weather<br>is only half the story — <strong>wearing it right</strong> is the other half."</em>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Bonus: Thank You Slide -->
+            <section class="title-slide">
+                <h1>Thank You! 🙏</h1>
+                <p style="font-size: 1.2em; margin-top: 1em;">Questions?</p>
+                <p style="margin-top: 2em; color: #7f8c8d;">
+                    <strong>Live Demo:</strong> Start the bot with <code>start_bot.bat</code><br>
+                    <strong>GitHub:</strong> krishna8399/WeatherBot
+                </p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            controls: true,
+            progress: true,
+            center: false,
+            slideNumber: 'c/t',
+            width: 1280,
+            height: 720,
+            margin: 0.1,
+        });
+    </script>
+</body>
+</html>
