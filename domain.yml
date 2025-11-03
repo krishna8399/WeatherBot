@@ -23,8 +23,10 @@ entities:  # Key data points we extract from messages
 slots:  # Memory values; here we keep location, units, requested detail, and raw weather
   location:
     type: text  # last referenced city/location
-    mappings: []  # set programmatically in actions or via forms (none here)
-    influence_conversation: false  # do not bias the policy predictions directly
+    mappings:
+      - type: from_entity
+        entity: location
+    influence_conversation: true  # remember location across conversation turns
   unit:
     type: text  # measurement units; default metric
     initial_value: metric
@@ -38,6 +40,11 @@ slots:  # Memory values; here we keep location, units, requested detail, and raw
     type: any  # stores WeatherAPI current payload for reuse (ActionProvideOutfit)
     mappings: []
     influence_conversation: false
+forms:
+  location_form:
+    required_slots:
+      - location
+
 responses:  # Templated replies referenced as utter_* in stories/rules/actions
   utter_goodbye:
   - text: "Bye"
@@ -47,8 +54,6 @@ responses:  # Templated replies referenced as utter_* in stories/rules/actions
   - text: "Sure — for which city would you like the weather?"
   utter_greet_with_suggestion:
   - text: "Hello! I can help you with weather info. You can ask about temperature, humidity, wind, UV index, or just say 'weather in <city>'. What would you like to know?"
-  utter_offer_outfit:
-  - text: "Would you like an outfit suggestion for this weather?"
 session_config:  # Session lifetime and slot carryover
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

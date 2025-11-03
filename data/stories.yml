@@ -6,33 +6,24 @@ stories:  # Example conversational paths to teach dialogue policies
   - intent: greet
   - action: utter_greet_with_suggestion
 
-- story: weather then outfit yes  # Ask weather -> offer outfit -> user accepts -> provide outfit
+- story: simple weather query  # Ask weather -> get brief weather response
   steps:
   - intent: ask_weather
     entities:
     - location: London
   - action: action_weather_brief
-  - action: utter_offer_outfit
-  - intent: affirm
-  - action: action_provide_outfit
 
-- story: weather then outfit no  # Ask weather -> offer outfit -> user declines -> say goodbye
-  steps:
-  - intent: ask_weather
-    entities:
-    - location: London
-  - action: action_weather_brief
-  - action: utter_offer_outfit
-  - intent: deny
-  - action: utter_goodbye
-
-- story: detail then outfit  # Ask a specific detail -> offer outfit -> user accepts -> provide outfit
+- story: weather detail query  # Ask specific weather detail
   steps:
   - intent: weather_detail_query
     entities:
     - location: London
     - weather_detail: humidity
   - action: action_weather_detail
-  - action: utter_offer_outfit
-  - intent: affirm
+
+- story: direct outfit request  # User explicitly asks for outfit suggestion
+  steps:
+  - intent: ask_outfit
+    entities:
+    - location: London
   - action: action_provide_outfit

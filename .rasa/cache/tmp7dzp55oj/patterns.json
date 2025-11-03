@@ -1,0 +1,6 @@
+[
+  {
+    "name": "location",
+    "pattern": "(\\bLondon\\b|\\bNew\\ York\\b|\\bParis\\b|\\bBerlin\\b|\\bMadrid\\b|\\bTokyo\\b|\\bSeattle\\b|\\bMumbai\\b|\\bRome\\b|\\bOslo\\b|\\bSan\\ Francisco\\b|\\bLos\\ Angeles\\b|\\bChicago\\b|\\bToronto\\b|\\bVancouver\\b)"
+  }
+]

@@ -1,0 +1,15 @@
+London
+New York
+Paris
+Berlin
+Madrid
+Tokyo
+Seattle
+Mumbai
+Rome
+Oslo
+San Francisco
+Los Angeles
+Chicago
+Toronto
+Vancouver

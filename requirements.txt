@@ -1,0 +1,8 @@
+rasa
+rasa-sdk
+requests
+pytest
+responses
+pillow
+# optional for prometheus metrics in actions
+prometheus-client

@@ -29,6 +29,12 @@ nlu:  # List of intents with example utterances (YAML block style)
     - see you around
     - bye bye
     - see you later
+    - thanks
+    - thank you
+    - ok thanks
+    - okay thanks
+    - thanks a lot
+    - thank you very much
 
 - intent: affirm
   examples: |
@@ -78,6 +84,21 @@ nlu:  # List of intents with example utterances (YAML block style)
     - will it snow in [Oslo](location)?
     - is it going to be rainy in [Seattle](location)?
     - any chance of rain in [Mumbai](location)?
+    - will it rain?
+    - will it rain today?
+    - is it raining?
+    - is it going to rain?
+    - will there be rain?
+    - any chance of rain?
+    - will it snow?
+    - is it sunny?
+    - is it cloudy?
+    - should i carry an umbrella?
+    - do i need an umbrella?
+    - should i bring an umbrella?
+    - should i put on sunscreen?
+    - do i need sunscreen?
+    - is it sunny enough for sunscreen?
 
 - intent: ask_outfit  # Direct requests for outfit suggestions (can work with or without prior weather)
   examples: |
@@ -86,6 +107,13 @@ nlu:  # List of intents with example utterances (YAML block style)
     - what to wear in [Paris](location)
     - outfit suggestion for [Tokyo](location)
     - how should I dress for the weather in [Berlin](location)
+    - what should I wear?
+    - suggest an outfit
+    - what to wear?
+    - outfit suggestion
+    - how should I dress?
+    - what clothes should I wear?
+    - suggest another outfit
 
 - intent: greet_with_suggestion  # When users ask what the bot can do; maps to a helpful greeting
   examples: |
@@ -104,3 +132,29 @@ nlu:  # List of intents with example utterances (YAML block style)
     - what's the [cloud cover](weather_detail) in [Madrid](location)?
     - how strong are the [gusts](weather_detail) in [Rome](location)?
     - what's the [feels like temperature](weather_detail) in [London](location)?
+
+# Lookup table for locations (helps DIET and RegexEntityExtractor)
+- lookup: location
+  examples: |
+    - London
+    - New York
+    - Paris
+    - Berlin
+    - Madrid
+    - Tokyo
+    - Seattle
+    - Mumbai
+    - Rome
+    - Oslo
+    - San Francisco
+    - Los Angeles
+    - Chicago
+    - Toronto
+    - Vancouver
+
+# Simple synonyms for common aliases
+- synonym: New York
+  examples: |
+    - NYC
+    - New York City
+
