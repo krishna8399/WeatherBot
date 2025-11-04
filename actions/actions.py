@@ -234,7 +234,13 @@ class ActionWeatherBrief(Action):
 			temp_c = current.get("temp_c")
 			condition = current.get("condition", {}).get("text", "")
 			user_text = tracker.latest_message.get("text", "").lower()
-			if "rain" in user_text:
+			if "umbrella" in user_text:
+				precip_mm = current.get("precip_mm", 0)
+				if precip_mm > 0 or "rain" in condition.lower() or "drizzle" in condition.lower():
+					dispatcher.utter_message(text=f"Yes, bring an umbrella! It's {condition.lower()} in {location}. {temp_c}°C, precipitation: {precip_mm}mm.")
+				else:
+					dispatcher.utter_message(text=f"No umbrella needed in {location} right now. {condition}, {temp_c}°C.")
+			elif "rain" in user_text:
 				precip_mm = current.get("precip_mm", 0)
 				if precip_mm > 0 or "rain" in condition.lower():
 					dispatcher.utter_message(text=f"Yes, it's currently raining in {location}. {condition}, {temp_c}°C. Precipitation: {precip_mm}mm.")
@@ -245,11 +251,15 @@ class ActionWeatherBrief(Action):
 					dispatcher.utter_message(text=f"Yes, it's snowing in {location}. {condition}, {temp_c}°C.")
 				else:
 					dispatcher.utter_message(text=f"No, it's not snowing in {location}. {condition}, {temp_c}°C.")
-			elif "sunny" in user_text or "sun" in user_text:
+			elif "sunny" in user_text or "sun" in user_text or "sunscreen" in user_text:
+				uv = current.get("uv", 0)
 				if "sunny" in condition.lower() or "clear" in condition.lower():
-					dispatcher.utter_message(text=f"Yes, it's sunny in {location}. {condition}, {temp_c}°C.")
+					if uv >= 3:
+						dispatcher.utter_message(text=f"Yes, it's sunny in {location} with UV index {uv}. Sunscreen recommended! {condition}, {temp_c}°C.")
+					else:
+						dispatcher.utter_message(text=f"Yes, it's sunny in {location}. {condition}, {temp_c}°C. UV index: {uv}.")
 				else:
-					dispatcher.utter_message(text=f"Not very sunny in {location} right now. {condition}, {temp_c}°C.")
+					dispatcher.utter_message(text=f"Not very sunny in {location} right now. {condition}, {temp_c}°C. UV index: {uv}.")
 			elif "cloud" in user_text:
 				cloud_pct = current.get("cloud", 0)
 				dispatcher.utter_message(text=f"Cloud cover in {location}: {cloud_pct}%. {condition}, {temp_c}°C.")
