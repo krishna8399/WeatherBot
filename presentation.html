@@ -347,9 +347,15 @@ Web UI → Rasa NLU
   ↓           ↓
 Actions → WeatherAPI
   ↓
-Outfit Logic
+Outfit Logic*
   ↓
 👤 Response!</pre>
+                        <p style="font-size: 0.65em; margin-top: 0.5em; color: #7f8c8d; line-height: 1.3;">
+                            <strong>*Outfit Logic:</strong> Rule-based system analyzing temp + conditions:<br>
+                            • Rain/snow → waterproof gear<br>
+                            • Temp bands (°C) → clothing layers<br>
+                            • UV index → sunscreen advice
+                        </p>
                         <p style="text-align: center; margin: 0.5em 0 0 0; font-size: 0.75em; color: #7f8c8d;">
                             <strong>⚡ < 2s</strong> | <strong>🎯 100% accuracy</strong>
                         </p>
@@ -435,7 +441,7 @@ Outfit Logic
                         </div>
                     </div>
                     <div>
-                        <h3 style="margin-top: 0;">Quality Metrics</h3>
+                        <h3 style="margin-top: 0;">Quality Metrics (Current MVP)</h3>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8em;">
                             <div style="background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); color: white; padding: 1em; border-radius: 10px; text-align: center;">
                                 <div style="font-size: 2.5em; font-weight: bold;">100%</div>
@@ -450,12 +456,14 @@ Outfit Logic
                                 <div style="font-size: 0.8em;">Response Time</div>
                             </div>
                             <div style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1em; border-radius: 10px; text-align: center;">
-                                <div style="font-size: 2.5em; font-weight: bold;">0</div>
-                                <div style="font-size: 0.8em;">Failed Tests</div>
+                                <div style="font-size: 2.5em; font-weight: bold;">3/3</div>
+                                <div style="font-size: 0.8em;">Unit Tests Pass</div>
                             </div>
                         </div>
-                        <div style="margin-top: 1em; padding: 0.8em; background: rgba(255,255,255,0.9); border-radius: 8px; font-size: 0.8em;">
-                            <strong>✅ MVP Status:</strong> Fully tested, documented, deployment-ready
+                        <div style="margin-top: 1em; padding: 0.8em; background: rgba(255,255,255,0.9); border-radius: 8px; font-size: 0.75em; line-height: 1.4;">
+                            <strong>Note:</strong> 100% = all <em>implemented user stories</em> pass validation.<br>
+                            <strong>Can it fail?</strong> Yes — external factors: API downtime, network issues, invalid city names.<br>
+                            <strong>Testing:</strong> 3 unit tests (outfit logic), Rasa data validation passes, manual QA on 20+ scenarios.
                         </div>
                     </div>
                 </div>
@@ -465,17 +473,29 @@ Outfit Logic
             <section class="bg-tech">
                 <h2>🛠️ Tech Stack</h2>
                 <div class="tech-grid">
-                    <div class="tech-item"><strong>Rasa 3.x</strong><br>NLU + Dialogue Management</div>
-                    <div class="tech-item"><strong>Python</strong><br>Custom Actions</div>
-                    <div class="tech-item"><strong>WeatherAPI</strong><br>Real-time Weather Data</div>
-                    <div class="tech-item"><strong>Flask + HTML/JS</strong><br>Web Interface</div>
+                    <div class="tech-item">
+                        <strong><a href="https://rasa.com/" target="_blank" style="color: white; text-decoration: underline;">Rasa 3.x</a></strong><br>
+                        NLU + Dialogue Management
+                    </div>
+                    <div class="tech-item">
+                        <strong><a href="https://www.python.org/" target="_blank" style="color: white; text-decoration: underline;">Python</a></strong><br>
+                        Custom Actions
+                    </div>
+                    <div class="tech-item">
+                        <strong><a href="https://www.weatherapi.com/" target="_blank" style="color: white; text-decoration: underline;">WeatherAPI</a></strong><br>
+                        Real-time Weather Data
+                    </div>
+                    <div class="tech-item">
+                        <strong><a href="https://flask.palletsprojects.com/" target="_blank" style="color: white; text-decoration: underline;">Flask</a> + HTML/JS</strong><br>
+                        Web Interface
+                    </div>
                 </div>
                 
                 <h3 style="margin-top: 1em;">Why This Stack?</h3>
                 <ul style="margin-top: 0.4em;">
-                    <li><strong>Rasa:</strong> Open-source, customizable, runs locally (data privacy)</li>
-                    <li><strong>WeatherAPI:</strong> Free tier, 1M calls/mo, 100+ data points</li>
-                    <li><strong>Docker:</strong> Easy deployment, platform-independent</li>
+                    <li><strong><a href="https://rasa.com/docs/" target="_blank" style="color: #2c3e50;">Rasa</a>:</strong> Open-source, customizable, runs locally (data privacy)</li>
+                    <li><strong><a href="https://www.weatherapi.com/docs/" target="_blank" style="color: #2c3e50;">WeatherAPI</a>:</strong> Free tier, 1M calls/mo, 100+ data points</li>
+                    <li><strong><a href="https://www.docker.com/" target="_blank" style="color: #2c3e50;">Docker</a>:</strong> Easy deployment, platform-independent</li>
                     <li><strong>Modular Design:</strong> Swap APIs, add new actions, scale horizontally</li>
                 </ul>
                 
@@ -496,7 +516,11 @@ Outfit Logic
                 <h3 style="margin-top: 0.8em;">Ethical Considerations</h3>
                 <ul style="margin-top: 0.4em;">
                     <li>✅ <strong>Transparent API usage:</strong> WeatherAPI terms compliant</li>
-                    <li>✅ <strong>Offline-first option:</strong> Can run locally without cloud dependencies</li>
+                    <li>✅ <strong>Offline-first option:</strong> Runs locally (no cloud required)<br>
+                        <span style="font-size: 0.85em; color: #7f8c8d;">→ Outfit logic is <em>rule-based code</em> (not data-driven), stored in <code>actions/actions.py</code><br>
+                        → No user data or clothing database needed on device<br>
+                        → Only weather API calls require internet (can cache for offline use)</span>
+                    </li>
                     <li>✅ <strong>Inclusive advice:</strong> No gender/cultural assumptions in outfit suggestions</li>
                     <li>✅ <strong>Environmental impact:</strong> Lightweight, low-compute design</li>
                 </ul>
