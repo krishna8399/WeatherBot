@@ -25,5 +25,7 @@ jobs:
         run: |
           rasa data validate
       - name: Run unit tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           pytest -q tests/test_actions.py
