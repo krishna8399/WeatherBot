@@ -12,18 +12,6 @@
     "predicted_entities": []
   },
   {
-    "text": "weather in London",
-    "entities": [
-      {
-        "start": 11,
-        "end": 17,
-        "value": "London",
-        "entity": "location"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
     "text": "what's the humidity in London?",
     "entities": [
       {
@@ -36,6 +24,30 @@
         "start": 23,
         "end": 29,
         "value": "London",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "what should I wear in Paris?",
+    "entities": [
+      {
+        "start": 22,
+        "end": 27,
+        "value": "Paris",
+        "entity": "location"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "weather in Berlin",
+    "entities": [
+      {
+        "start": 11,
+        "end": 17,
+        "value": "Berlin",
         "entity": "location"
       }
     ],
