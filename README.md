@@ -8,35 +8,22 @@ A conversational AI assistant built with Rasa that provides real-time weather in
 - Python 3.8 or higher
 - Internet connection
 
-### Setup (3 Easy Steps)
+### Setup (2 Easy Steps)
 
-**1. Set up API Key**
+✅ **API Key Already Included!** The WeatherAPI key is hardcoded in the bot for evaluation purposes. No environment setup needed!
 
-Run the setup script for your platform:
-
-**Windows:**
-```cmd
-setup_api_key.bat
-```
-
-**Linux/Mac:**
-```bash
-chmod +x setup_api_key.sh
-./setup_api_key.sh
-```
-
-**Evaluation API Key (included):** `309d537f8f694e30a7283845252310`
-
-**2. Install Dependencies**
+**1. Install Dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-**3. Run the Bot**
+**2. Run the Bot**
 ```bash
 rasa run actions &
 rasa shell
 ```
+
+**Note:** The evaluation API key `309d537f8f694e30a7283845252310` is already configured as a fallback in the code.
 
 ## 📖 Full Documentation
 

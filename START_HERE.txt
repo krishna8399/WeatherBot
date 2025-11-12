@@ -5,40 +5,32 @@
 ║                                                                ║
 ╚════════════════════════════════════════════════════════════════╝
 
-🚨 IMPORTANT: API Key Setup Required! 🚨
+✅ GOOD NEWS: API Key Already Configured! ✅
 
-This bot requires a WeatherAPI key to function. Follow these steps:
+The WeatherAPI key is already hardcoded in the bot for evaluation.
+No setup required - just run it!
 
+Optional: If you want to use your own API key:
 ┌────────────────────────────────────────────────────────────────┐
-│ STEP 1: Set Up API Key (REQUIRED - Takes 30 seconds)          │
+│ OPTIONAL: Custom API Key Setup                                │
 └────────────────────────────────────────────────────────────────┘
 
-   Windows Users:
-   ──────────────
-   Double-click: setup_api_key.bat
-   
-   When prompted, press Enter to use the evaluation key.
-   Close and reopen your terminal after running.
+   Windows: Double-click setup_api_key.bat
+   Linux/Mac: Run ./setup_api_key.sh
 
-   Linux/Mac Users:
-   ────────────────
-   Run in terminal:
-     chmod +x setup_api_key.sh
-     ./setup_api_key.sh
-     source ~/.bashrc  (or ~/.zshrc)
-
-   Evaluation API Key (included):
-   ──────────────────────────────
+   Hardcoded Evaluation API Key:
+   ─────────────────────────────
    309d537f8f694e30a7283845252310
+   (No action needed - already in the code!)
 
 ┌────────────────────────────────────────────────────────────────┐
-│ STEP 2: Install Dependencies                                  │
+│ STEP 1: Install Dependencies                                  │
 └────────────────────────────────────────────────────────────────┘
 
    pip install -r requirements.txt
 
 ┌────────────────────────────────────────────────────────────────┐
-│ STEP 3: Run the Bot                                           │
+│ STEP 2: Run the Bot                                           │
 └────────────────────────────────────────────────────────────────┘
 
    Option A - Interactive Terminal:
