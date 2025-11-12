@@ -17,21 +17,14 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
-# Backup API keys for evaluation (in case primary key hits rate limits)
-BACKUP_API_KEYS = [
-	"309d537f8f694e30a7283845252310",  # Primary evaluation key
-	# Add more backup keys here if needed
-]
+# Hardcoded API key for easy evaluation
+# This key is ready to use - no setup required!
+WEATHERAPI_KEY = "309d537f8f694e30a7283845252310"
 
 
 def _get_weatherapi_key():
-	"""Get API key from environment or use hardcoded backup keys."""
-	# Try environment variable first
-	env_key = os.environ.get("WEATHERAPI_KEY")
-	if env_key:
-		return env_key
-	# Fall back to backup keys
-	return BACKUP_API_KEYS[0] if BACKUP_API_KEYS else None
+	"""Get the hardcoded API key."""
+	return WEATHERAPI_KEY
 
 
 def _http_get_with_retries(url: str, timeout: int = 8, retries: int = 2, backoff: float = 0.6):
@@ -121,8 +114,8 @@ class ActionWeatherOutfit(Action):
 			dispatcher.utter_message(response="utter_ask_location")
 			return []
 
-		# Get API key from environment, fallback to hardcoded key for evaluation
-		weatherapi_key = os.environ.get("WEATHERAPI_KEY", "309d537f8f694e30a7283845252310")
+		# Get API key (hardcoded for easy evaluation)
+		weatherapi_key = _get_weatherapi_key()
 		if not weatherapi_key:
 			dispatcher.utter_message(text="WeatherAPI key not set.")
 			return []
@@ -171,8 +164,8 @@ class ActionWeatherDetail(Action):
 			dispatcher.utter_message(text="Which weather detail do you want? (e.g. humidity, wind, UV, pressure)")
 			return []
 
-		# Get API key from environment, fallback to hardcoded key for evaluation
-		weatherapi_key = os.environ.get("WEATHERAPI_KEY", "309d537f8f694e30a7283845252310")
+		# Get API key (hardcoded for easy evaluation)
+		weatherapi_key = _get_weatherapi_key()
 		if not weatherapi_key:
 			dispatcher.utter_message(text="WeatherAPI key not set.")
 			return []
@@ -235,8 +228,8 @@ class ActionWeatherBrief(Action):
 			dispatcher.utter_message(response="utter_ask_location")
 			return []
 
-		# Get API key from environment, fallback to hardcoded key for evaluation
-		weatherapi_key = os.environ.get("WEATHERAPI_KEY", "309d537f8f694e30a7283845252310")
+		# Get API key (hardcoded for easy evaluation)
+		weatherapi_key = _get_weatherapi_key()
 		if not weatherapi_key:
 			dispatcher.utter_message(text="WeatherAPI key not set.")
 			return []
@@ -296,8 +289,8 @@ class ActionProvideOutfit(Action):
 
 	def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 		location = tracker.get_slot("location")
-		# Get API key from environment, fallback to hardcoded key for evaluation
-		weatherapi_key = os.environ.get("WEATHERAPI_KEY", "309d537f8f694e30a7283845252310")
+		# Get API key (hardcoded for easy evaluation)
+		weatherapi_key = _get_weatherapi_key()
 		
 		if not (weatherapi_key and location):
 			dispatcher.utter_message(text="I don't have a location to base an outfit on. Ask for the weather in a city first.")

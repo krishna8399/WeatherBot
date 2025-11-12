@@ -1,0 +1,52 @@
+═══════════════════════════════════════════════════════════════════
+                     🚨 URGENT FIX - API KEY ERROR 🚨                    
+═══════════════════════════════════════════════════════════════════
+
+PROBLEM: You're getting "401 Unauthorized" error
+
+CAUSE: Your system has an OLD expired API key saved in environment 
+       variables that's overriding the working hardcoded key.
+
+SOLUTION (Takes 30 seconds):
+
+OPTION 1 - Remove the old environment variable:
+──────────────────────────────────────────────
+   Windows:
+   1. Open PowerShell/CMD
+   2. Run: setx WEATHERAPI_KEY ""
+   3. Close ALL terminals
+   4. Open NEW terminal
+   5. cd to WeatherBot folder
+   6. Run: rasa run actions
+   7. Open ANOTHER new terminal
+   8. Run: rasa shell
+
+   Linux/Mac:
+   1. Edit your ~/.bashrc or ~/.zshrc file
+   2. Remove the line: export WEATHERAPI_KEY="..."
+   3. Save and close terminal
+   4. Open new terminal
+   5. cd to WeatherBot folder
+   6. Run: rasa run actions
+   7. Open another terminal
+   8. Run: rasa shell
+
+OPTION 2 - Use the working key directly:
+──────────────────────────────────────────────
+   Windows:
+   Run: setx WEATHERAPI_KEY "309d537f8f694e30a7283845252310"
+   
+   Linux/Mac:
+   Run: export WEATHERAPI_KEY="309d537f8f694e30a7283845252310"
+
+   Then restart terminals and run bot as usual.
+
+═══════════════════════════════════════════════════════════════════
+
+WHY THIS HAPPENED:
+The code was checking environment variables FIRST, then falling back
+to the hardcoded key. Your environment had the old expired key saved.
+
+I've now fixed the code to ONLY use the hardcoded working key by default!
+
+═══════════════════════════════════════════════════════════════════

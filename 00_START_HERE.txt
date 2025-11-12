@@ -17,14 +17,12 @@ Open a terminal in this folder and run:
 This checks: Python version, dependencies, API key, API connection, model.
 Expected output: "✓ All checks passed!"
 
-If you see "403 Forbidden" error:
-  → The API key hit usage limits on your network
+If you see "403 Forbidden" or "401 Unauthorized" error:
+  → The hardcoded API key may have hit usage limits
   → Get a new FREE key (takes 2 minutes): 
     https://www.weatherapi.com/signup.aspx
-  → Set it:
-    Windows:   setx WEATHERAPI_KEY "your_new_key"
-    Linux/Mac: export WEATHERAPI_KEY="your_new_key"
-  → Close terminal, open new one, run test_setup.py again
+  → Open actions/actions.py and replace the WEATHERAPI_KEY value
+  → Save the file and restart: rasa run actions
 
 ───────────────────────────────────────────────────────────────────
 STEP 2: Install Dependencies
@@ -88,13 +86,13 @@ Problem: "Could not connect to action server"
 Solution: Make sure Terminal 1 (rasa run actions) is running first
           and shows "Action endpoint is up"
 
-Problem: "403 Forbidden" or "API key invalid"
+Problem: "403 Forbidden" or "401 Unauthorized" 
 Solution: 
   1. Get new key: https://www.weatherapi.com/signup.aspx
-  2. Set it: setx WEATHERAPI_KEY "your_key" (Windows)
-          or export WEATHERAPI_KEY="your_key" (Linux/Mac)
-  3. Restart terminal
-  4. Run test_setup.py to verify
+  2. Open actions/actions.py in text editor
+  3. Replace WEATHERAPI_KEY = "..." with your new key
+  4. Save file
+  5. Stop and restart: rasa run actions
 
 Problem: Bot responses are slow
 Solution: This is normal - the bot fetches real weather data from API
