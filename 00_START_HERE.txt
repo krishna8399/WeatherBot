@@ -1,0 +1,134 @@
+═══════════════════════════════════════════════════════════════════
+                     🤖 WEATHERBOT - START HERE 🤖                    
+                        For Professors/Evaluators
+═══════════════════════════════════════════════════════════════════
+
+Welcome! This is a conversational AI weather assistant built with Rasa.
+Follow the 3 steps below to run the bot.
+
+───────────────────────────────────────────────────────────────────
+STEP 1: Run Diagnostic Test (Recommended)
+───────────────────────────────────────────────────────────────────
+
+Open a terminal in this folder and run:
+
+    python test_setup.py
+
+This checks: Python version, dependencies, API key, API connection, model.
+Expected output: "✓ All checks passed!"
+
+If you see "403 Forbidden" error:
+  → The API key hit usage limits on your network
+  → Get a new FREE key (takes 2 minutes): 
+    https://www.weatherapi.com/signup.aspx
+  → Set it:
+    Windows:   setx WEATHERAPI_KEY "your_new_key"
+    Linux/Mac: export WEATHERAPI_KEY="your_new_key"
+  → Close terminal, open new one, run test_setup.py again
+
+───────────────────────────────────────────────────────────────────
+STEP 2: Install Dependencies
+───────────────────────────────────────────────────────────────────
+
+    pip install -r requirements.txt
+
+(Takes 2-3 minutes)
+
+───────────────────────────────────────────────────────────────────
+STEP 3: Run the Bot
+───────────────────────────────────────────────────────────────────
+
+You need TWO terminal windows:
+
+TERMINAL 1 - Start the actions server:
+    rasa run actions
+
+Wait until you see: "Action endpoint is up and running"
+
+TERMINAL 2 - Start the chatbot:
+    rasa shell
+
+Now chat with the bot! Try these:
+  • "What's the weather in London?"
+  • "Will it rain today?"
+  • "Should I carry an umbrella?"
+  • "What should I wear?"
+  • "What's the humidity in Paris?"
+
+Type "bye" or "/stop" to exit.
+
+═══════════════════════════════════════════════════════════════════
+📊 PROJECT DOCUMENTATION
+═══════════════════════════════════════════════════════════════════
+
+• PROJECT_ABSTRACT.md  - Academic paper/abstract (research details)
+• presentation.pdf     - Presentation slides
+• test_setup.py       - Diagnostic script (run first!)
+
+═══════════════════════════════════════════════════════════════════
+✅ TESTING THE BOT
+═══════════════════════════════════════════════════════════════════
+
+Run unit tests:
+    pytest tests/test_actions.py -v
+    Expected: 3/3 tests pass ✅
+
+Validate Rasa data:
+    rasa data validate
+    Expected: "No story structure conflicts found" ✅
+
+═══════════════════════════════════════════════════════════════════
+🆘 TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════
+
+Problem: "No module named 'rasa'"
+Solution: Run: pip install -r requirements.txt
+
+Problem: "Could not connect to action server"
+Solution: Make sure Terminal 1 (rasa run actions) is running first
+          and shows "Action endpoint is up"
+
+Problem: "403 Forbidden" or "API key invalid"
+Solution: 
+  1. Get new key: https://www.weatherapi.com/signup.aspx
+  2. Set it: setx WEATHERAPI_KEY "your_key" (Windows)
+          or export WEATHERAPI_KEY="your_key" (Linux/Mac)
+  3. Restart terminal
+  4. Run test_setup.py to verify
+
+Problem: Bot responses are slow
+Solution: This is normal - the bot fetches real weather data from API
+
+Problem: Bot says "I don't understand"
+Solution: Try example questions from Step 3 above
+          The bot is trained on weather-related queries only
+
+═══════════════════════════════════════════════════════════════════
+🎯 KEY FEATURES DEMONSTRATED
+═══════════════════════════════════════════════════════════════════
+
+✓ Natural Language Understanding (Rasa DIET classifier)
+✓ Real-time weather data integration (WeatherAPI)
+✓ Context-aware conversations (remembers location)
+✓ Rule-based outfit recommendations
+✓ Error handling with retries and caching
+✓ 100% test pass rate
+✓ CI/CD with GitHub Actions
+
+═══════════════════════════════════════════════════════════════════
+💡 TECHNICAL NOTES
+═══════════════════════════════════════════════════════════════════
+
+• API Key: Hardcoded fallback in actions/actions.py
+• Python: 3.8 recommended
+• Framework: Rasa 3.x
+• Tests: pytest (unit tests), Rasa validation
+• Caching: 10-minute TTL for weather data
+• Repository: https://github.com/krishna8399/WeatherBot
+
+═══════════════════════════════════════════════════════════════════
+
+Questions? All documentation is in this folder.
+Start with test_setup.py to diagnose any issues!
+
+═══════════════════════════════════════════════════════════════════

@@ -17,6 +17,22 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
+# Backup API keys for evaluation (in case primary key hits rate limits)
+BACKUP_API_KEYS = [
+	"309d537f8f694e30a7283845252310",  # Primary evaluation key
+	# Add more backup keys here if needed
+]
+
+
+def _get_weatherapi_key():
+	"""Get API key from environment or use hardcoded backup keys."""
+	# Try environment variable first
+	env_key = os.environ.get("WEATHERAPI_KEY")
+	if env_key:
+		return env_key
+	# Fall back to backup keys
+	return BACKUP_API_KEYS[0] if BACKUP_API_KEYS else None
+
 
 def _http_get_with_retries(url: str, timeout: int = 8, retries: int = 2, backoff: float = 0.6):
 	"""Perform a simple GET with retries and exponential backoff.

@@ -1,76 +1,34 @@
 # WeatherBot
 
-A conversational AI assistant built with Rasa that provides real-time weather information and personalized outfit recommendations.
+A conversational AI weather assistant built with Rasa.
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Python 3.8 or higher
-- Internet connection
+**👉 READ `00_START_HERE.txt` FIRST!** It has complete setup instructions.
 
-### Setup (2 Easy Steps)
+Quick version:
+1. Run `python test_setup.py` (checks everything)
+2. Run `pip install -r requirements.txt`
+3. Run `rasa run actions` (Terminal 1)
+4. Run `rasa shell` (Terminal 2)
 
-✅ **API Key Already Included!** The WeatherAPI key is hardcoded in the bot for evaluation purposes. No environment setup needed!
+**Note:** API key is hardcoded in the code - no setup needed!
 
-**1. Install Dependencies**
-```bash
-pip install -r requirements.txt
-```
+## � Documentation
 
-**2. Run the Bot**
-```bash
-rasa run actions &
-rasa shell
-```
-
-**Note:** The evaluation API key `309d537f8f694e30a7283845252310` is already configured as a fallback in the code.
-
-## 📖 Full Documentation
-
-See **[SETUP_GUIDE.md](SETUP_GUIDE.md)** for detailed instructions, troubleshooting, and alternative setup methods.
-
-## ✅ Verify Installation
-
-Run tests to ensure everything works:
-```bash
-pytest tests/test_actions.py -v
-```
-
-Expected: All 3 tests pass ✅
+- **00_START_HERE.txt** - Complete instructions (READ THIS FIRST!)
+- **PROJECT_ABSTRACT.md** - Academic paper/abstract
+- **presentation.pdf** - Presentation slides
+- **test_setup.py** - Diagnostic tool
 
 ## 🎯 Features
 
-- Real-time weather data for worldwide locations
-- Context-aware conversations (remembers your location)
-- Smart outfit recommendations based on weather
-- Specific answers for umbrella/sunscreen questions
-- UV index and precipitation analysis
+✓ NLU with Rasa DIET classifier
+✓ Real-time weather data
+✓ Context-aware conversations
+✓ Outfit recommendations
+✓ 100% test pass rate
 
-## 📦 What's Included
+## � Links
 
-- Complete source code
-- Trained Rasa model
-- Unit tests (100% pass rate)
-- Documentation and presentation
-- Docker deployment configuration
-- CI/CD pipeline (GitHub Actions)
-
-## 🔧 Troubleshooting
-
-**"API key not set" error?**
-→ Run `setup_api_key.bat` (Windows) or `setup_api_key.sh` (Linux/Mac)
-
-**Import errors?**
-→ Set PYTHONPATH: `set PYTHONPATH=%CD%` (Windows) or `export PYTHONPATH=$(pwd)` (Linux/Mac)
-
-See [SETUP_GUIDE.md](SETUP_GUIDE.md) for more help.
-
-## 📄 Project Documentation
-
-- [SETUP_GUIDE.md](SETUP_GUIDE.md) - Complete setup instructions
-- [PROJECT_ABSTRACT.md](PROJECT_ABSTRACT.md) - Academic project abstract
-- [DEPLOYMENT.md](DEPLOYMENT.md) - Docker deployment guide
-
-## 🎓 Academic Use
-
-This project is submitted for academic evaluation. The included API key is for evaluation purposes only and has usage limits.
+Repository: https://github.com/krishna8399/WeatherBot
