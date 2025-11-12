@@ -5,15 +5,15 @@ echo ============================================
 echo.
 echo This script will set up your WeatherAPI key.
 echo.
-echo For evaluation purposes, use this key:
-echo 309d537f8f4d4b5c8a9192738252411
+**For evaluation purposes, use this key:**
+echo 309d537f8f694e30a7283845252310
 echo.
 echo.
 
 set /p API_KEY="Enter your WeatherAPI key (or press Enter to use default): "
 
 if "%API_KEY%"=="" (
-    set API_KEY=309d537f8f4d4b5c8a9192738252411
+    set API_KEY=309d537f8f694e30a7283845252310
     echo Using default evaluation key...
 )
 

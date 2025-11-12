@@ -25,7 +25,7 @@ chmod +x setup_api_key.sh
 ./setup_api_key.sh
 ```
 
-**Evaluation API Key (included):** `309d537f8f4d4b5c8a9192738252411`
+**Evaluation API Key (included):** `309d537f8f694e30a7283845252310`
 
 **2. Install Dependencies**
 ```bash

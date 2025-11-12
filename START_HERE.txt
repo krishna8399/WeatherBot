@@ -29,7 +29,7 @@ This bot requires a WeatherAPI key to function. Follow these steps:
 
    Evaluation API Key (included):
    ──────────────────────────────
-   309d537f8f4d4b5c8a9192738252411
+   309d537f8f694e30a7283845252310
 
 ┌────────────────────────────────────────────────────────────────┐
 │ STEP 2: Install Dependencies                                  │

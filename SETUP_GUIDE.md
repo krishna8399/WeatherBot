@@ -20,7 +20,7 @@ Extract the `WeatherBot_Upload.zip` file to a folder of your choice.
 1. Open PowerShell or Command Prompt **as Administrator**
 2. Run this command:
    ```
-   setx WEATHERAPI_KEY "309d537f8f4d4b5c8a9192738252411"
+   setx WEATHERAPI_KEY "309d537f8f694e30a7283845252310"
    ```
 3. Close and reopen your terminal for changes to take effect
 
@@ -28,7 +28,7 @@ Extract the `WeatherBot_Upload.zip` file to a folder of your choice.
 1. Open terminal
 2. Add to your `~/.bashrc` or `~/.zshrc`:
    ```bash
-   export WEATHERAPI_KEY="309d537f8f4d4b5c8a9192738252411"
+   export WEATHERAPI_KEY="309d537f8f694e30a7283845252310"
    ```
 3. Run: `source ~/.bashrc` (or restart terminal)
 
@@ -88,7 +88,7 @@ If you encounter any issues, please contact the project author.
 
 **Included API Key (for evaluation purposes):**
 ```
-309d537f8f4d4b5c8a9192738252411
+309d537f8f694e30a7283845252310
 ```
 
 **Note:** This is a free-tier API key with usage limits. For production use, please register for your own key at https://www.weatherapi.com/

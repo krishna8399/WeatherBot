@@ -5,13 +5,13 @@ echo "WeatherBot API Key Setup (Linux/Mac)"
 echo "============================================"
 echo ""
 echo "For evaluation purposes, use this key:"
-echo "309d537f8f4d4b5c8a9192738252411"
+echo "309d537f8f694e30a7283845252310"
 echo ""
 
 read -p "Enter your WeatherAPI key (or press Enter to use default): " API_KEY
 
 if [ -z "$API_KEY" ]; then
-    API_KEY="309d537f8f4d4b5c8a9192738252411"
+    API_KEY="309d537f8f694e30a7283845252310"
     echo "Using default evaluation key..."
 fi
 
